@@ -30,19 +30,19 @@ class MyHomePageState extends State<MyHomePage> {
   bool right = false;
   String moveFlutter;
 
-  Color _cforward = Color(0xFF00818a);
-  Color _cbackward = Color(0xFF00818a);
-  Color _cleft = Color(0xFF00818a);
-  Color _cright = Color(0xFF00818a);
+  Color cforward = Color(0xFF00818a);
+  Color cbackward = Color(0xFF00818a);
+  Color cleft = Color(0xFF00818a);
+  Color cright = Color(0xFF00818a);
 
-  _holdB(bool move, Color c){
+  _holdB(move, c){
     setState(() {
       move = true;
       c = Color(0xFF404b69);
     });
   }
 
-  _releaseB(bool move, Color c){
+  _releaseB(move, c){
     setState(() {
       move = false;
       c = Color(0xFF00818a);
@@ -82,11 +82,11 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               // backward
               new GestureDetector(
-                onTapDown: (_) => _holdB(backward, _cbackward),
-                onTapUp: (_) => _releaseB(backward, _cbackward),
+                onTapDown: (_) => _holdB(backward, cbackward),
+                onTapUp: (_) => _releaseB(backward, cbackward),
                 child: new Container(
                   decoration: new BoxDecoration(
-                    color: _cbackward,
+                    color: cbackward,
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
                   margin: EdgeInsets.only(top: 80.0, left: 30.0),
@@ -96,11 +96,11 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               // forward
               new GestureDetector(
-                onTapDown: (_) => _holdB(forward, _cforward),
-                onTapUp: (_) => _releaseB(forward, _cforward),
+                onTapDown: (_) => _holdB(forward, cforward),
+                onTapUp: (_) => _releaseB(forward, cforward),
                 child: new Container(
                   decoration: new BoxDecoration(
-                    color: _cforward,
+                    color: cforward,
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
                   margin: EdgeInsets.only(top: 30.0, right: 30.0),
@@ -115,11 +115,11 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               // left
               new GestureDetector(
-                onTapDown: (_) => _holdB(left, _cleft),
-                onTapUp: (_) => _releaseB(left, _cleft),
+                onTapDown: (_) => _holdB(left, cleft),
+                onTapUp: (_) => _releaseB(left, cleft),
                 child: new Container(
                   decoration: new BoxDecoration(
-                    color: _cleft,
+                    color: cleft,
                     borderRadius: BorderRadius.all(Radius.circular(50.0)),
                   ),
                   margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
@@ -129,11 +129,11 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               // right
               new GestureDetector(
-                onTapDown: (_) => _holdB(right, _cright),
-                onTapUp: (_) => _releaseB(right, _cright),
+                onTapDown: (_) => _holdB(right, cright),
+                onTapUp: (_) => _releaseB(right, cright),
                 child: new Container(
                   decoration: new BoxDecoration(
-                    color: _cright,
+                    color: cright,
                     borderRadius: BorderRadius.all(Radius.circular(50.0)),
                   ),
                   margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
