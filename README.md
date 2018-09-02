@@ -2,7 +2,16 @@
 
 Appen är skriven i dart och använder sig av flutter.
 
-All kod ligger i `/lib/main.dart`.
+Både dart och flutter är gjort av Google.
 
-Appen fungerar för både IOS och ANDROID.
+All kod ligger i `lib/main.dart`.
 
+Appen fungerar bara för ANDROID just nu för att flutter_socket_io inte har fullt support för IOS än.
+
+### Länkar
+
+https://github.com/mebn/klas
+
+https://flutter.io/
+
+https://pub.dartlang.org/packages/flutter_socket_io
