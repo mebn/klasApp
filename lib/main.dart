@@ -24,11 +24,10 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   SocketIO socketIO;
-  String useThis;
-  String forward = "false";
-  String backward = "false";
-  String left = "false";
-  String right = "false";
+  bool forward = false;
+  bool backward = false;
+  bool left = false;
+  bool right = false;
   String moveFlutter;
 
   Color _cforward = Color(0xFF00818a);
@@ -36,45 +35,17 @@ class MyHomePageState extends State<MyHomePage> {
   Color _cleft = Color(0xFF00818a);
   Color _cright = Color(0xFF00818a);
 
-  _holdB(String id){
+  _holdB(bool move, Color c){
     setState(() {
-      if(id == "forward"){
-        _cforward = Color(0xFF404b69);
-        forward = "true";
-      }
-      if(id == "backward"){
-        _cbackward = Color(0xFF404b69);
-        backward = "true";
-      }
-      if(id == "left"){
-        _cleft = Color(0xFF404b69);
-        left = "true";
-      }
-      if(id == "right"){
-        _cright = Color(0xFF404b69);
-        right = "true";
-      }   
+      move = true;
+      c = Color(0xFF404b69);
     });
   }
 
-  _releaseB(String id){
+  _releaseB(bool move, Color c){
     setState(() {
-      if(id == "forward"){
-        _cforward = Color(0xFF00818a);
-        forward = "false";
-      }
-      if(id == "backward"){
-        _cbackward = Color(0xFF00818a);
-        backward = "false";
-      }
-      if(id == "left"){
-        _cleft = Color(0xFF00818a);
-        left = "false";
-      }
-      if(id == "right"){
-        _cright = Color(0xFF00818a);
-        right = "false";
-      }
+      move = false;
+      c = Color(0xFF00818a);
     });
   }
 
@@ -111,8 +82,8 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               // backward
               new GestureDetector(
-                onTapDown: (_) => _holdB('backward'),
-                onTapUp: (_) => _releaseB('backward'),
+                onTapDown: (_) => _holdB(backward, _cbackward),
+                onTapUp: (_) => _releaseB(backward, _cbackward),
                 child: new Container(
                   decoration: new BoxDecoration(
                     color: _cbackward,
@@ -125,8 +96,8 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               // forward
               new GestureDetector(
-                onTapDown: (_) => _holdB('forward'),
-                onTapUp: (_) => _releaseB('forward'),
+                onTapDown: (_) => _holdB(forward, _cforward),
+                onTapUp: (_) => _releaseB(forward, _cforward),
                 child: new Container(
                   decoration: new BoxDecoration(
                     color: _cforward,
@@ -144,8 +115,8 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               // left
               new GestureDetector(
-                onTapDown: (_) => _holdB('left'),
-                onTapUp: (_) => _releaseB('left'),
+                onTapDown: (_) => _holdB(left, _cleft),
+                onTapUp: (_) => _releaseB(left, _cleft),
                 child: new Container(
                   decoration: new BoxDecoration(
                     color: _cleft,
@@ -158,8 +129,8 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               // right
               new GestureDetector(
-                onTapDown: (_) => _holdB('right'),
-                onTapUp: (_) => _releaseB('right'),
+                onTapDown: (_) => _holdB(right, _cright),
+                onTapUp: (_) => _releaseB(right, _cright),
                 child: new Container(
                   decoration: new BoxDecoration(
                     color: _cright,
