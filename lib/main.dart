@@ -82,6 +82,7 @@ class MyHomePageState extends State<MyHomePage> {
     socketIO.init();
     socketIO.connect();
   }
+
   MyHomePageState(){
     _connectSocket();
     new Timer.periodic(Duration(milliseconds: 17), (Timer t) {
@@ -98,76 +99,173 @@ class MyHomePageState extends State<MyHomePage> {
       //appBar: new AppBar(
       //  title: new Text('klasApp'),
       //),
-      body: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              // backward
-              new GestureDetector(
-                onTapDown: (_) => _holdB('backward'),
-                onTapUp: (_) => _releaseB('backward'),
-                child: new Container(
-                  decoration: new BoxDecoration(
-                    color: cbackward,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  margin: EdgeInsets.only(top: 80.0, left: 30.0),
-                  width: 100.0,
-                  height: 150.0,
+      body: new OrientationBuilder(
+        builder: (context, orientation) {
+          if(orientation == Orientation.portrait){
+            return new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    // backward
+                    new GestureDetector(
+                      onTapDown: (_) => _holdB('backward'),
+                      onTapUp: (_) => _releaseB('backward'),
+                      onTapCancel: () => _releaseB('backward'),
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                          color: cbackward,
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        margin: EdgeInsets.only(top: 80.0, left: 30.0),
+                        width: 100.0,
+                        height: 150.0,
+                      ),
+                    ),
+                    // forward
+                    new GestureDetector(
+                      onTapDown: (_) => _holdB('forward'),
+                      onTapUp: (_) => _releaseB('forward'),
+                      onTapCancel: () => _releaseB('backward'),
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                          color: cforward,
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        ),
+                        margin: EdgeInsets.only(top: 30.0, right: 30.0),
+                        width: 100.0,
+                        height: 200.0,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              // forward
-              new GestureDetector(
-                onTapDown: (_) => _holdB('forward'),
-                onTapUp: (_) => _releaseB('forward'),
-                child: new Container(
-                  decoration: new BoxDecoration(
-                    color: cforward,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  margin: EdgeInsets.only(top: 30.0, right: 30.0),
-                  width: 100.0,
-                  height: 200.0,
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    // left
+                    new GestureDetector(
+                      onTapDown: (_) => _holdB('left'),
+                      onTapUp: (_) => _releaseB('left'),
+                      onTapCancel: () => _releaseB('backward'),
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                          color: cleft,
+                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        ),
+                        margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
+                        width: 100.0,
+                        height: 100.0,
+                      ),
+                    ),
+                    // right
+                    new GestureDetector(
+                      onTapDown: (_) => _holdB('right'),
+                      onTapUp: (_) => _releaseB('right'),
+                      onTapCancel: () => _releaseB('backward'),
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                          color: cright,
+                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        ),
+                        margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
+                        width: 100.0,
+                        height: 100.0,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              // left
-              new GestureDetector(
-                onTapDown: (_) => _holdB('left'),
-                onTapUp: (_) => _releaseB('left'),
-                child: new Container(
-                  decoration: new BoxDecoration(
-                    color: cleft,
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                  ),
-                  margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
-                  width: 100.0,
-                  height: 100.0,
-                ),
-              ),
-              // right
-              new GestureDetector(
-                onTapDown: (_) => _holdB('right'),
-                onTapUp: (_) => _releaseB('right'),
-                child: new Container(
-                  decoration: new BoxDecoration(
-                    color: cright,
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                  ),
-                  margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
-                  width: 100.0,
-                  height: 100.0,
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            );
+          }
+          // landscape
+          else {
+            return new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Row(),
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        // left
+                        new GestureDetector(
+                          onTapDown: (_) => _holdB('left'),
+                          onTapUp: (_) => _releaseB('left'),
+                          onTapCancel: () => _releaseB('backward'),
+                          child: new Container(
+                            decoration: new BoxDecoration(
+                              color: cleft,
+                              borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                            ),
+                            margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
+                            width: 100.0,
+                            height: 100.0,
+                          ),
+                        ),
+                        // right
+                        new GestureDetector(
+                          onTapDown: (_) => _holdB('right'),
+                          onTapUp: (_) => _releaseB('right'),
+                          onTapCancel: () => _releaseB('backward'),
+                          child: new Container(
+                            decoration: new BoxDecoration(
+                              color: cright,
+                              borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                            ),
+                            margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
+                            width: 100.0,
+                            height: 100.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        // backward
+                        new GestureDetector(
+                          onTapDown: (_) => _holdB('backward'),
+                          onTapUp: (_) => _releaseB('backward'),
+                          onTapCancel: () => _releaseB('backward'),
+                          child: new Container(
+                            decoration: new BoxDecoration(
+                              color: cbackward,
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            ),
+                            margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
+                            width: 100.0,
+                            height: 150.0,
+                          ),
+                        ),
+                        // forward
+                        new GestureDetector(
+                          onTapDown: (_) => _holdB('forward'),
+                          onTapUp: (_) => _releaseB('forward'),
+                          onTapCancel: () => _releaseB('backward'),
+                          child: new Container(
+                            decoration: new BoxDecoration(
+                              color: cforward,
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            ),
+                            margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
+                            width: 100.0,
+                            height: 200.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            );
+          }
+        },
       ),
     );
   }
