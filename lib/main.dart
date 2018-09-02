@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_socket_io/flutter_socket_io.dart';
+import 'dart:async';
 
 void main() => runApp(new MyApp());
 
@@ -28,6 +29,7 @@ class MyHomePageState extends State<MyHomePage> {
   String backward = "false";
   String left = "false";
   String right = "false";
+  String moveFlutter;
 
   Color _cforward = Color(0xFF00818a);
   Color _cbackward = Color(0xFF00818a);
@@ -81,9 +83,13 @@ class MyHomePageState extends State<MyHomePage> {
     socketIO.init();
     socketIO.connect();
   }
-  _sendMsg(){
-    String moveFlutter = '{forward:'+forward.toString()+',backward:'+backward.toString()+',left:'+left.toString()+',right:'+right.toString()+'}';
-    socketIO.sendMessage("event", moveFlutter);
+  MyHomePageState(){
+    new Timer.periodic(Duration(seconds:3), (Timer t) {
+      setState(() {
+        moveFlutter = '{forward:'+forward.toString()+',backward:'+backward.toString()+',left:'+left.toString()+',right:'+right.toString()+'}';
+      });
+      socketIO.sendMessage("event", moveFlutter);
+    });
   }
   @override
   void initState() {
