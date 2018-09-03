@@ -121,6 +121,9 @@ class MyHomePageState extends State<MyHomePage> {
                         margin: EdgeInsets.only(top: 80.0, left: 30.0),
                         width: 100.0,
                         height: 150.0,
+                        child: new Center(
+                          child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
+                        ),
                       ),
                     ),
                     // forward
@@ -136,6 +139,9 @@ class MyHomePageState extends State<MyHomePage> {
                         margin: EdgeInsets.only(top: 30.0, right: 30.0),
                         width: 100.0,
                         height: 200.0,
+                        child: new Center(
+                          child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
+                        ),
                       ),
                     ),
                   ],
@@ -156,6 +162,9 @@ class MyHomePageState extends State<MyHomePage> {
                         margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
                         width: 100.0,
                         height: 100.0,
+                        child: new Center(
+                          child: new Icon(IconData(0xe5c4, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                        ),
                       ),
                     ),
                     // right
@@ -171,6 +180,9 @@ class MyHomePageState extends State<MyHomePage> {
                         margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
                         width: 100.0,
                         height: 100.0,
+                        child: new Center(
+                          child: new Icon(IconData(0xe5c8, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                        ),
                       ),
                     ),
                   ],
@@ -205,6 +217,9 @@ class MyHomePageState extends State<MyHomePage> {
                             margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
                             width: 100.0,
                             height: 100.0,
+                            child: new Center(
+                              child: new Icon(IconData(0xe5c4, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                            ),
                           ),
                         ),
                         // right
@@ -220,6 +235,9 @@ class MyHomePageState extends State<MyHomePage> {
                             margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
                             width: 100.0,
                             height: 100.0,
+                            child: new Center(
+                              child: new Icon(IconData(0xe5c8, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                            ),
                           ),
                         ),
                       ],
@@ -241,6 +259,9 @@ class MyHomePageState extends State<MyHomePage> {
                             margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
                             width: 100.0,
                             height: 150.0,
+                            child: new Center(
+                              child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
+                            ),
                           ),
                         ),
                         // forward
@@ -256,6 +277,9 @@ class MyHomePageState extends State<MyHomePage> {
                             margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
                             width: 100.0,
                             height: 200.0,
+                            child: new Center(
+                              child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
+                            ),
                           ),
                         ),
                       ],
