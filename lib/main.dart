@@ -78,7 +78,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   _connectSocket() {
-    socketIO = new SocketIO("http://192.168.1.216:8080", "/");
+    socketIO = new SocketIO("http://10.0.0.1:8080", "/");
     socketIO.init();
     socketIO.connect();
   }
@@ -127,7 +127,7 @@ class MyHomePageState extends State<MyHomePage> {
                     new GestureDetector(
                       onTapDown: (_) => _holdB('forward'),
                       onTapUp: (_) => _releaseB('forward'),
-                      onTapCancel: () => _releaseB('backward'),
+                      onTapCancel: () => _releaseB('forward'),
                       child: new Container(
                         decoration: new BoxDecoration(
                           color: cforward,
@@ -147,7 +147,7 @@ class MyHomePageState extends State<MyHomePage> {
                     new GestureDetector(
                       onTapDown: (_) => _holdB('left'),
                       onTapUp: (_) => _releaseB('left'),
-                      onTapCancel: () => _releaseB('backward'),
+                      onTapCancel: () => _releaseB('left'),
                       child: new Container(
                         decoration: new BoxDecoration(
                           color: cleft,
@@ -162,7 +162,7 @@ class MyHomePageState extends State<MyHomePage> {
                     new GestureDetector(
                       onTapDown: (_) => _holdB('right'),
                       onTapUp: (_) => _releaseB('right'),
-                      onTapCancel: () => _releaseB('backward'),
+                      onTapCancel: () => _releaseB('right'),
                       child: new Container(
                         decoration: new BoxDecoration(
                           color: cright,
@@ -196,7 +196,7 @@ class MyHomePageState extends State<MyHomePage> {
                         new GestureDetector(
                           onTapDown: (_) => _holdB('left'),
                           onTapUp: (_) => _releaseB('left'),
-                          onTapCancel: () => _releaseB('backward'),
+                          onTapCancel: () => _releaseB('left'),
                           child: new Container(
                             decoration: new BoxDecoration(
                               color: cleft,
@@ -211,7 +211,7 @@ class MyHomePageState extends State<MyHomePage> {
                         new GestureDetector(
                           onTapDown: (_) => _holdB('right'),
                           onTapUp: (_) => _releaseB('right'),
-                          onTapCancel: () => _releaseB('backward'),
+                          onTapCancel: () => _releaseB('right'),
                           child: new Container(
                             decoration: new BoxDecoration(
                               color: cright,
@@ -247,7 +247,7 @@ class MyHomePageState extends State<MyHomePage> {
                         new GestureDetector(
                           onTapDown: (_) => _holdB('forward'),
                           onTapUp: (_) => _releaseB('forward'),
-                          onTapCancel: () => _releaseB('backward'),
+                          onTapCancel: () => _releaseB('forward'),
                           child: new Container(
                             decoration: new BoxDecoration(
                               color: cforward,
