@@ -6,13 +6,17 @@ Både dart och flutter är gjort av Google.
 
 All kod ligger i `lib/main.dart`.
 
-Appen fungerar för både android och ios.
+Appen fungerar för både ios och android.
 
 ## Ladda ner appen
 
 ### apk
 
-Ladda ner `app.apk` filen från ...
+Ladda ner `app-release.apk` här: ...
+
+### ipa
+
+Ladda ner `app-release.ipa` här: ...
 
 ### Länkar
 
