@@ -6,7 +6,7 @@ Både dart och flutter är gjort av Google.
 
 All kod ligger i `lib/main.dart`.
 
-Appen fungerar bara för ANDROID just nu för att flutter_socket_io inte har fullt support för IOS än.
+För tillfället fungerar appen bara för android för att flutter_socket_io inte har fullt support för ios än.
 
 ## Ladda ner appen
 
