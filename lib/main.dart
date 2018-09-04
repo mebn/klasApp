@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_socket_io/flutter_socket_io.dart';
+import 'package:flutter_socket_io/socket_io_manager.dart';
 import 'dart:async';
 
 void main() => runApp(new MyApp());
@@ -45,10 +46,11 @@ class MyHomePageState extends State<MyHomePage> {
 
   MyHomePageState(){
     // connecting to server
-    socketIO = new SocketIO("http://10.0.0.1:8080", "/");
+    //socketIO = SocketIOManager().createSocketIO("http://192.168.1.216:8080", "/"); // test ip
+    socketIO = SocketIOManager().createSocketIO("http://10.0.0.1:8080", "/"); // real server ip
     socketIO.init();
     socketIO.connect();
-    // sending command to the server at 60fps
+    // sending commands to the server at 60fps
     new Timer.periodic(Duration(milliseconds: 17), (Timer t) {
       setState(() {
         moveFlutter = '{forward:'+directions[0].toString()+
