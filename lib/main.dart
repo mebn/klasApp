@@ -24,72 +24,40 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   SocketIO socketIO;
-  bool forward = false;
-  bool backward = false;
-  bool left = false;
-  bool right = false;
   String moveFlutter;
+  // forward, backward, left, right
+  List<bool> directions = [false, false, false, false];
+  List<Color> colors = [Color(0xFF00818a), Color(0xFF00818a), Color(0xFF00818a), Color(0xFF00818a)];
 
-  Color cforward = Color(0xFF00818a);
-  Color cbackward = Color(0xFF00818a);
-  Color cleft = Color(0xFF00818a);
-  Color cright = Color(0xFF00818a);
-
-  _holdB(String id){
+  _holdB(int id){
     setState(() {
-      if(id == 'backward'){
-        backward = true;
-        cbackward = Color(0xFF404b69);
-      }
-      if(id == 'forward'){
-        forward = true;
-        cforward = Color(0xFF404b69);
-      }
-      if(id == 'left'){
-        left = true;
-        cleft = Color(0xFF404b69);
-      }
-      if(id == 'right'){
-        right = true;
-        cright = Color(0xFF404b69);
-      }
+      directions[id] = true;
+      colors[id] = Color(0xFF404b69);
     });
   }
 
-  _releaseB(String id){
+  _releaseB(int id){
     setState(() {
-      if(id == 'backward'){
-        backward = false;
-        cbackward = Color(0xFF00818a);
-      }
-      if(id == 'forward'){
-        forward = false;
-        cforward = Color(0xFF00818a);
-      }
-      if(id == 'left'){
-        left = false;
-        cleft = Color(0xFF00818a);
-      }
-      if(id == 'right'){
-        right = false;
-        cright = Color(0xFF00818a);
-      }
+      directions[id] = false;
+      colors[id] = Color(0xFF00818a);
     });
-  }
-
-  _connectSocket() {
-    socketIO = new SocketIO("http://10.0.0.1:8080", "/");
-    socketIO.init();
-    socketIO.connect();
   }
 
   MyHomePageState(){
-    _connectSocket();
+    // connecting to server
+    socketIO = new SocketIO("http://10.0.0.1:8080", "/");
+    socketIO.init();
+    socketIO.connect();
+    // sending command to the server at 60fps
     new Timer.periodic(Duration(milliseconds: 17), (Timer t) {
       setState(() {
-        moveFlutter = '{forward:'+forward.toString()+',backward:'+backward.toString()+',left:'+left.toString()+',right:'+right.toString()+'}';
+        moveFlutter = '{forward:'+directions[0].toString()+
+        ',backward:'+directions[1].toString()+
+        ',left:'+directions[2].toString()+
+        ',right:'+directions[3].toString()+
+        '}';
       });
-      socketIO.sendMessage("event", moveFlutter);
+      socketIO.sendMessage("moveFlutter", moveFlutter);
     });
   }
   @override
@@ -108,39 +76,39 @@ class MyHomePageState extends State<MyHomePage> {
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    // backward
-                    new GestureDetector(
-                      onTapDown: (_) => _holdB('backward'),
-                      onTapUp: (_) => _releaseB('backward'),
-                      onTapCancel: () => _releaseB('backward'),
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                          color: cbackward,
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                        margin: EdgeInsets.only(top: 80.0, left: 30.0),
-                        width: 100.0,
-                        height: 150.0,
-                        child: new Center(
-                          child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
-                        ),
-                      ),
-                    ),
                     // forward
                     new GestureDetector(
-                      onTapDown: (_) => _holdB('forward'),
-                      onTapUp: (_) => _releaseB('forward'),
-                      onTapCancel: () => _releaseB('forward'),
+                      onTapDown: (_) => _holdB(0),
+                      onTapUp: (_) => _releaseB(0),
+                      onTapCancel: () => _releaseB(0),
                       child: new Container(
                         decoration: new BoxDecoration(
-                          color: cforward,
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          color: colors[0],
+                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        margin: EdgeInsets.only(top: 30.0, right: 30.0),
+                        margin: EdgeInsets.only(top: 30.0, left: 30.0),
                         width: 100.0,
                         height: 200.0,
                         child: new Center(
                           child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
+                        ),
+                      ),
+                    ),
+                    // backward
+                    new GestureDetector(
+                      onTapDown: (_) => _holdB(1),
+                      onTapUp: (_) => _releaseB(1),
+                      onTapCancel: () => _releaseB(1),
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                          color: colors[1],
+                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        ),
+                        margin: EdgeInsets.only(top: 80.0, right: 30.0),
+                        width: 100.0,
+                        height: 150.0,
+                        child: new Center(
+                          child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
                         ),
                       ),
                     ),
@@ -151,12 +119,12 @@ class MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     // left
                     new GestureDetector(
-                      onTapDown: (_) => _holdB('left'),
-                      onTapUp: (_) => _releaseB('left'),
-                      onTapCancel: () => _releaseB('left'),
+                      onTapDown: (_) => _holdB(2),
+                      onTapUp: (_) => _releaseB(2),
+                      onTapCancel: () => _releaseB(2),
                       child: new Container(
                         decoration: new BoxDecoration(
-                          color: cleft,
+                          color: colors[2],
                           borderRadius: BorderRadius.all(Radius.circular(50.0)),
                         ),
                         margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
@@ -169,12 +137,12 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                     // right
                     new GestureDetector(
-                      onTapDown: (_) => _holdB('right'),
-                      onTapUp: (_) => _releaseB('right'),
-                      onTapCancel: () => _releaseB('right'),
+                      onTapDown: (_) => _holdB(3),
+                      onTapUp: (_) => _releaseB(3),
+                      onTapCancel: () => _releaseB(3),
                       child: new Container(
                         decoration: new BoxDecoration(
-                          color: cright,
+                          color: colors[3],
                           borderRadius: BorderRadius.all(Radius.circular(50.0)),
                         ),
                         margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
@@ -204,39 +172,39 @@ class MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        // left
+                        // forward
                         new GestureDetector(
-                          onTapDown: (_) => _holdB('left'),
-                          onTapUp: (_) => _releaseB('left'),
-                          onTapCancel: () => _releaseB('left'),
+                          onTapDown: (_) => _holdB(0),
+                          onTapUp: (_) => _releaseB(0),
+                          onTapCancel: () => _releaseB(0),
                           child: new Container(
                             decoration: new BoxDecoration(
-                              color: cleft,
+                              color: colors[0],
                               borderRadius: BorderRadius.all(Radius.circular(50.0)),
                             ),
                             margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
                             width: 100.0,
-                            height: 100.0,
+                            height: 200.0,
                             child: new Center(
-                              child: new Icon(IconData(0xe5c4, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                              child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
                             ),
                           ),
                         ),
-                        // right
+                        // backward
                         new GestureDetector(
-                          onTapDown: (_) => _holdB('right'),
-                          onTapUp: (_) => _releaseB('right'),
-                          onTapCancel: () => _releaseB('right'),
+                          onTapDown: (_) => _holdB(1),
+                          onTapUp: (_) => _releaseB(1),
+                          onTapCancel: () => _releaseB(1),
                           child: new Container(
                             decoration: new BoxDecoration(
-                              color: cright,
+                              color: colors[1],
                               borderRadius: BorderRadius.all(Radius.circular(50.0)),
                             ),
                             margin: EdgeInsets.only(bottom: 30.0, left: 30.0),
                             width: 100.0,
-                            height: 100.0,
+                            height: 150.0,
                             child: new Center(
-                              child: new Icon(IconData(0xe5c8, fontFamily: 'MaterialIcons', matchTextDirection: true)),
+                              child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
                             ),
                           ),
                         ),
@@ -246,39 +214,39 @@ class MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        // backward
+                        // left
                         new GestureDetector(
-                          onTapDown: (_) => _holdB('backward'),
-                          onTapUp: (_) => _releaseB('backward'),
-                          onTapCancel: () => _releaseB('backward'),
+                          onTapDown: (_) => _holdB(2),
+                          onTapUp: (_) => _releaseB(2),
+                          onTapCancel: () => _releaseB(2),
                           child: new Container(
                             decoration: new BoxDecoration(
-                              color: cbackward,
-                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              color: colors[2],
+                              borderRadius: BorderRadius.all(Radius.circular(50.0)),
                             ),
                             margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
                             width: 100.0,
-                            height: 150.0,
+                            height: 100.0,
                             child: new Center(
-                              child: new Icon(IconData(0xe5db, fontFamily: 'MaterialIcons')),
+                              child: new Icon(IconData(0xe5c4, fontFamily: 'MaterialIcons', matchTextDirection: true)),
                             ),
                           ),
                         ),
-                        // forward
+                        // right
                         new GestureDetector(
-                          onTapDown: (_) => _holdB('forward'),
-                          onTapUp: (_) => _releaseB('forward'),
-                          onTapCancel: () => _releaseB('forward'),
+                          onTapDown: (_) => _holdB(3),
+                          onTapUp: (_) => _releaseB(3),
+                          onTapCancel: () => _releaseB(3),
                           child: new Container(
                             decoration: new BoxDecoration(
-                              color: cforward,
-                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              color: colors[3],
+                              borderRadius: BorderRadius.all(Radius.circular(50.0)),
                             ),
                             margin: EdgeInsets.only(bottom: 30.0, right: 30.0),
                             width: 100.0,
-                            height: 200.0,
+                            height: 100.0,
                             child: new Center(
-                              child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
+                              child: new Icon(IconData(0xe5c8, fontFamily: 'MaterialIcons', matchTextDirection: true)),
                             ),
                           ),
                         ),
