@@ -28,19 +28,19 @@ class MyHomePageState extends State<MyHomePage> {
   String moveFlutter;
   // forward, backward, left, right
   List<bool> directions = [false, false, false, false];
-  List<Color> colors = [Color(0xFF00818a), Color(0xFF00818a), Color(0xFF00818a), Color(0xFF00818a)];
+  List<Color> colors = [Color(0xFF37373d), Color(0xFF37373d), Color(0xFF37373d), Color(0xFF37373d)];
 
   _holdB(int id){
     setState(() {
       directions[id] = true;
-      colors[id] = Color(0xFF404b69);
+      colors[id] = Color(0xFF252526);
     });
   }
 
   _releaseB(int id){
     setState(() {
       directions[id] = false;
-      colors[id] = Color(0xFF00818a);
+      colors[id] = Color(0xFF37373d);
     });
   }
 
@@ -65,7 +65,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color(0xFF283149),
+      backgroundColor: Color(0xFF1e1e1e),
       //appBar: new AppBar(
       //  title: new Text('klasApp'),
       //),
