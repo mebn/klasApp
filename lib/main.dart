@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_socket_io/flutter_socket_io.dart';
 import 'package:flutter_socket_io/socket_io_manager.dart';
 import 'dart:async';
+import 'AwesomeButton.dart';
 
 void main() => runApp(new MyApp());
 
@@ -44,24 +45,24 @@ class MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  MyHomePageState(){
-    // connecting to server
-    //socketIO = SocketIOManager().createSocketIO("http://192.168.1.216:8080", "/"); // test ip
-    socketIO = SocketIOManager().createSocketIO("http://10.0.0.1:8080", "/"); // real server ip
-    socketIO.init();
-    socketIO.connect();
-    // sending commands to the server at 60fps
-    new Timer.periodic(Duration(milliseconds: 17), (Timer t) {
-      setState(() {
-        moveFlutter = '{forward:'+directions[0].toString()+
-        ',backward:'+directions[1].toString()+
-        ',left:'+directions[2].toString()+
-        ',right:'+directions[3].toString()+
-        '}';
-      });
-      socketIO.sendMessage("moveFlutter", moveFlutter);
-    });
-  }
+  // MyHomePageState(){
+  //   // connecting to server
+  //   socketIO = SocketIOManager().createSocketIO("http://10.0.0.1:8080", "/");
+  //   socketIO.init();
+  //   socketIO.connect();
+  //   // sending commands to the server
+  //   new Timer.periodic(Duration(milliseconds: 17), (Timer t) {
+  //     setState(() {
+  //       moveFlutter = '{forward:'+directions[0].toString()+
+  //       ',backward:'+directions[1].toString()+
+  //       ',left:'+directions[2].toString()+
+  //       ',right:'+directions[3].toString()+
+  //       '}';
+  //     });
+  //     socketIO.sendMessage("moveFlutter", moveFlutter);
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -96,6 +97,7 @@ class MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
+                    AwesomeButton(),
                     // backward
                     new GestureDetector(
                       onTapDown: (_) => _holdB(1),
