@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 
 class AwesomeButton extends StatefulWidget {
+  AwesomeButton({Key key, this.icon, this.width, this.height, this.position, this.direction}) : super(key: key);
+  final Icon icon;
+  final double width;
+  final double height;
+  final String direction;
+  final EdgeInsetsGeometry position;
+
   @override
   _AwesomeButtonState createState() => _AwesomeButtonState();
 }
 
 class _AwesomeButtonState extends State<AwesomeButton> {
-  Color color;
+  Color color = Color(0xFF37373d);
   _holdB(){
     setState(() {
+      if(widget.direction == 'forward'){ globals.forward = true; }
+      if(widget.direction == 'backward'){ globals.backward = true; }
+      if(widget.direction == 'left'){ globals.left = true; }
+      if(widget.direction == 'right'){ globals.right = true; }
       color = Color(0xFF252526);
     });
   }
 
   _releaseB(){
     setState(() {
+      if(widget.direction == 'forward'){ globals.forward = false; }
+      if(widget.direction == 'backward'){ globals.backward = false; }
+      if(widget.direction == 'left'){ globals.left = false; }
+      if(widget.direction == 'right'){ globals.right = false; }
       color = Color(0xFF37373d);
     });
   }
@@ -30,11 +46,11 @@ class _AwesomeButtonState extends State<AwesomeButton> {
           color: color,
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
         ),
-        margin: EdgeInsets.only(top: 30.0, left: 30.0),
-        width: 100.0,
-        height: 200.0,
+        margin: widget.position,
+        width: widget.width,
+        height: widget.height,
         child: new Center(
-          child: new Icon(IconData(0xe5d8, fontFamily: 'MaterialIcons')),
+          child: widget.icon,
         ),
       ),
     );
