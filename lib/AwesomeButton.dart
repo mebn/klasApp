@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
 
 class AwesomeButton extends StatefulWidget {
-  AwesomeButton({Key key, this.icon, this.width, this.height, this.position, this.direction}) : super(key: key);
+  // props
+  AwesomeButton({
+    Key key,
+    this.icon,
+    this.width,
+    this.height,
+    this.position,
+    this.direction
+  }) : super(key: key);
+
   final Icon icon;
   final double width;
   final double height;
@@ -15,7 +24,7 @@ class AwesomeButton extends StatefulWidget {
 
 class _AwesomeButtonState extends State<AwesomeButton> {
   Color color = Color(0xFF37373d);
-  _holdB(){
+  _hold(){
     setState(() {
       if(widget.direction == 'forward'){ globals.forward = true; }
       if(widget.direction == 'backward'){ globals.backward = true; }
@@ -25,7 +34,7 @@ class _AwesomeButtonState extends State<AwesomeButton> {
     });
   }
 
-  _releaseB(){
+  _release(){
     setState(() {
       if(widget.direction == 'forward'){ globals.forward = false; }
       if(widget.direction == 'backward'){ globals.backward = false; }
@@ -38,9 +47,9 @@ class _AwesomeButtonState extends State<AwesomeButton> {
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
-      onTapDown: (_) => _holdB(),
-      onTapUp: (_) => _releaseB(),
-      onTapCancel: () => _releaseB(),
+      onTapDown: (_) => _hold(),
+      onTapUp: (_) => _release(),
+      onTapCancel: () => _release(),
       child: new Container(
         decoration: new BoxDecoration(
           color: color,
