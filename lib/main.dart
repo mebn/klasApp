@@ -25,12 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  SocketIO socketIO;
-  String moveFlutter;
-
-  // constructor
   MyHomePageState(){
-    // from './serverSetup.dart'
     serverSetup.serverSetup();
   }
 
