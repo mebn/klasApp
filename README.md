@@ -1,15 +1,13 @@
 # klasAppFlutter 
 
-All kod ligger i `lib/main.dart`.
+App till roboten Klas.
 
-Appen fungerar för både ios och android.
+## Information
 
-## Ladda ner appen
+Gymnasiearbete.
 
-Android:
+Koden ligger i `lib` mappen.
 
-Ios:
-
-### Länkar
+## Länkar
 
 https://pub.dartlang.org/packages/flutter_socket_io
