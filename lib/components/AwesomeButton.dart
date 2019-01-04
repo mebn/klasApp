@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'globals.dart' as globals;
+import '../globals.dart' as globals;
 
 class AwesomeButton extends StatefulWidget {
   // props
@@ -23,14 +23,14 @@ class AwesomeButton extends StatefulWidget {
 }
 
 class _AwesomeButtonState extends State<AwesomeButton> {
-  Color color = Color(0xFF37373d);
+  Color color = Colors.white;
   _hold(){
     setState(() {
       if(widget.direction == 'forward'){ globals.forward = true; }
       if(widget.direction == 'backward'){ globals.backward = true; }
       if(widget.direction == 'left'){ globals.left = true; }
       if(widget.direction == 'right'){ globals.right = true; }
-      color = Color(0xFF252526);
+      color = Color(0xFFdadce0);
     });
   }
 
@@ -40,25 +40,28 @@ class _AwesomeButtonState extends State<AwesomeButton> {
       if(widget.direction == 'backward'){ globals.backward = false; }
       if(widget.direction == 'left'){ globals.left = false; }
       if(widget.direction == 'right'){ globals.right = false; }
-      color = Color(0xFF37373d);
+      color = Colors.white;
     });
   }
-
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
+    return GestureDetector(
       onTapDown: (_) => _hold(),
       onTapUp: (_) => _release(),
       onTapCancel: () => _release(),
-      child: new Container(
-        decoration: new BoxDecoration(
+      child: Container(
+        decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
+          border: Border.all(
+            color: Color(0xFFdadce0),
+            width: 1.0
+          )
         ),
         margin: widget.position,
         width: widget.width,
         height: widget.height,
-        child: new Center(
+        child: Center(
           child: widget.icon,
         ),
       ),

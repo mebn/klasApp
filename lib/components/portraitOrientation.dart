@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'AwesomeButton.dart';
+
+class PortraitOrientation extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // forward
+            AwesomeButton(
+              icon: Icon(Icons.arrow_upward, color: Colors.black),
+              width: 100.0,
+              height: 200.0,
+              position: EdgeInsets.only(top: 30.0, left: 30.0),
+              direction: 'forward',
+            ),
+            // backward
+            AwesomeButton(
+              icon: Icon(Icons.arrow_downward, color: Colors.black),
+              width: 100.0,
+              height: 150.0,
+              position: EdgeInsets.only(top: 80.0, right: 30.0),
+              direction: 'backward',
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // left
+            AwesomeButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              width: 100.0,
+              height: 100.0,
+              position: EdgeInsets.only(bottom: 30.0, left: 30.0),
+              direction: 'left',
+            ),
+            // right
+            AwesomeButton(
+              icon: Icon(Icons.arrow_forward, color: Colors.black),
+              width: 100.0,
+              height: 100.0,
+              position: EdgeInsets.only(bottom: 30.0, right: 30.0),
+              direction: 'right',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}

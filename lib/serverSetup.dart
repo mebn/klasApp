@@ -3,7 +3,7 @@ import 'package:flutter_socket_io/socket_io_manager.dart';
 import './globals.dart' as globals;
 import 'dart:async';
 
-void serverSetup() {
+void connectToServer() {
   SocketIO socketIO;
   String moveFlutter;
   // server connection
