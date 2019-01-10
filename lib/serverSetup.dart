@@ -10,15 +10,14 @@ void connectToServer() {
   socketIO = SocketIOManager().createSocketIO("http://10.0.0.1:8080", "/");
   socketIO.init();
   socketIO.connect();
-  // timer to send data to server
+  // timer to send data to server every 10 milliseconds
   new Timer.periodic(Duration(milliseconds: 10), (Timer t) {
     // string -> json on server
     moveFlutter = '{forward:'+globals.forward.toString()+
-    ',backward:'+globals.backward.toString()+
-    ',left:'+globals.left.toString()+
-    ',right:'+globals.right.toString()+
-    '}';
-
+      ',backward:'+globals.backward.toString()+
+      ',left:'+globals.left.toString()+
+      ',right:'+globals.right.toString()+
+      '}';
     socketIO.sendMessage("moveFlutter", moveFlutter);
   });
 }

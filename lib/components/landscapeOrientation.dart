@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'AwesomeButton.dart';
+import './awesomeButton.dart';
 
 class LandscapeOrientation extends StatelessWidget {
   @override

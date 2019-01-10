@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../components/portraitOrientation.dart';
 import '../components/landscapeOrientation.dart';
-import '../serverSetup.dart' as serverSetup;
 import '../globals.dart' as globals;
 
 class ControllScreen extends StatefulWidget {
@@ -18,14 +17,20 @@ class _ControllScreenState extends State<ControllScreen> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: Colors.white,
     ));
-    serverSetup.connectToServer();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("KLAS", style: TextStyle(color: globals.black)),
+        title: Text("Klas", style: TextStyle(color: globals.black)),
         backgroundColor: Colors.white,
         centerTitle: true,
         brightness: Brightness.light,
-        elevation: 1.0,
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: OrientationBuilder(
         builder: (context, orientation) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../globals.dart' as globals;
+import 'package:vibration/vibration.dart';
 
 class AwesomeButton extends StatefulWidget {
   // props
@@ -32,6 +33,7 @@ class _AwesomeButtonState extends State<AwesomeButton> {
       if(widget.direction == 'right'){ globals.right = true; }
       color = Color(0xFFdadce0);
     });
+    Vibration.vibrate(duration: 10);
   }
 
   _release(){
