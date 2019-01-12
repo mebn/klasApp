@@ -9,9 +9,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Shader linearGradient = LinearGradient(
-    colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
-    ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+    Shader myGg = LinearGradient(
+      colors: <Color>[Color(0xffb92b27), Color(0xff1565C0)],
+      ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
@@ -20,10 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
-        centerTitle: true,
-        brightness: Brightness.light,
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
@@ -41,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("Klas\nController", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = linearGradient)),
+            Text("KLAS", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = myGg)),
             SomeButton(
               width: 90.0,
               height: 90.0,

@@ -54,7 +54,7 @@ class _AwesomeButtonState extends State<AwesomeButton> {
       child: Container(
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+          borderRadius: BorderRadius.all(Radius.circular(500.0)),
           border: Border.all(
             color: Color(0xFFdadce0),
             width: 1.0

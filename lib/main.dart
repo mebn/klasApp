@@ -9,9 +9,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     serverSetup.connectToServer();
     return MaterialApp(
-      title: 'controller',
+      title: 'klas',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: HomeScreen(),
     );

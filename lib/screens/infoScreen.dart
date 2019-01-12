@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../components/infoCard.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -7,6 +8,9 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
+  TextStyle text = TextStyle(fontSize: 16, color: Color(0xff8d8d8d));
+  TextStyle title = TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black);
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
@@ -15,10 +19,9 @@ class _InfoScreenState extends State<InfoScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Info", style: TextStyle(color: Colors.black)),
+        title: Text("Information", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         centerTitle: true,
-        brightness: Brightness.light,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -27,23 +30,34 @@ class _InfoScreenState extends State<InfoScreen> {
           },
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text("Gymnasiearbete", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Color(0xFFB877B1))),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Text("Marcus Nilszén", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Color(0xFFB877B1))),
-                  Text("William Muth", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Color(0xFFB877B1))),
-                  Text("Richard Palm", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Color(0xFFB877B1))),
-                ],
-              ),
-            ),
-            Text(""),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          InfoCard(
+            children: <Widget>[
+              Text("Användning", style: title),
+              Text("1. Starta raspberry pi", style: text),
+              Text("2. Anslut till klas", style: text),
+              Text("3. Öppna kontrollerna i appen och kör!", style: text),
+            ],
+          ),
+          InfoCard(
+            children: <Widget>[
+              Text("Om klas", style: title),
+              Text("Klas är ett gymnasiearbete som går ut på att göra en raspberry pi robot som man kan styra med en app.", style: text),              
+            ],
+          ),
+          InfoCard(
+            children: <Widget>[
+              Text("Gruppmedlemmar", style: title),
+              Text("Marcus Nilszén", style: text),
+              Text("William Muth", style: text),
+              Text("Richard Palm", style: text),
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: 20.0),
+          ),
+        ],
       ),
     );
   }

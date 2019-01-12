@@ -57,7 +57,7 @@ class _SomeButtonState extends State<SomeButton> {
         width: widget.width,
         height: widget.height,
         child: Center(
-          child: Icon(Icons.crop_free, color: Color(0xFFB877B1), size: 40),
+          child: Icon(Icons.crop_free, color: Color(0xFF1A73E8), size: 40),
         ),
       ),
     );
