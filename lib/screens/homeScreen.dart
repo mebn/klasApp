@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("KLAS", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = myGg)),
+            Text("Klas", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = myGg)),
             SomeButton(
               width: 90.0,
               height: 90.0,

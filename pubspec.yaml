@@ -66,5 +66,11 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: ProductSans
+      fonts:
+        - asset: fonts/ProductSans-Regular.ttf
+        - asset: fonts/ProductSans-Bold.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

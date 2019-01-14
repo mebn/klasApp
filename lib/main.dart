@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'klas',
       theme: ThemeData(
         primarySwatch: Colors.grey,
+        fontFamily: 'ProductSans'
       ),
       home: HomeScreen(),
     );
