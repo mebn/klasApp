@@ -18,7 +18,7 @@ class LandscapeOrientation extends StatelessWidget {
               children: <Widget>[
                 // forward
                 AwesomeButton(
-                  icon: Icon(Icons.arrow_upward, color: Colors.black),
+                  icon: Icons.arrow_upward,
                   width: 130.0,
                   height: 230.0,
                   position: EdgeInsets.only(bottom: 30.0, left: 30.0),
@@ -26,7 +26,7 @@ class LandscapeOrientation extends StatelessWidget {
                 ),
                 // backward
                 AwesomeButton(
-                  icon: Icon(Icons.arrow_downward, color: Colors.black),
+                  icon: Icons.arrow_downward,
                   width: 130.0,
                   height: 180.0,
                   position: EdgeInsets.only(bottom: 30.0, left: 30.0),
@@ -40,7 +40,7 @@ class LandscapeOrientation extends StatelessWidget {
               children: <Widget>[
                 // left
                 AwesomeButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.black),
+                  icon: Icons.arrow_back,
                   width: 130.0,
                   height: 130.0,
                   position: EdgeInsets.only(bottom: 30.0, right: 30.0),
@@ -48,7 +48,7 @@ class LandscapeOrientation extends StatelessWidget {
                 ),
                 // right
                 AwesomeButton(
-                  icon: Icon(Icons.arrow_forward, color: Colors.black),
+                  icon: Icons.arrow_forward,
                   width: 130.0,
                   height: 130.0,
                   position: EdgeInsets.only(bottom: 30.0, right: 30.0),

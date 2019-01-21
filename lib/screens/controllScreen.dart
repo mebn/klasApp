@@ -19,7 +19,9 @@ class _ControllScreenState extends State<ControllScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text("Kontroller", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
+        centerTitle: true,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),

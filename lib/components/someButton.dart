@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
 import '../screens/controllScreen.dart';
+import 'package:vibration/vibration.dart';
 
 class SomeButton extends StatefulWidget {
-  // props
-  SomeButton({
-    Key key,
-    this.width,
-    this.height
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-
   @override
   _SomeButtonState createState() => _SomeButtonState();
 }
 
 class _SomeButtonState extends State<SomeButton> {
-  Color outerColor = Colors.white;  
+  Color outerColor = Color(0xFF1A73E8);
   _handleTapUp(){
     setState(() {
-      outerColor = Colors.white;
+      outerColor = Color(0xFF1A73E8);
     });
     Navigator.push(
       context,
@@ -29,13 +20,14 @@ class _SomeButtonState extends State<SomeButton> {
   }
   _handleTapDown(){
     setState(() {
-      outerColor = Color(0xFFdadce0);
+      outerColor = Color(0xFF5F98F6);
     });
+    Vibration.vibrate(duration: 10);
   }
 
   _handleCancel(){
     setState(() {
-      outerColor = Colors.white;
+      outerColor = Color(0xFF1A73E8);
     });
   }
   
@@ -49,15 +41,22 @@ class _SomeButtonState extends State<SomeButton> {
         decoration: BoxDecoration(
           color: outerColor,
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
-          border: Border.all(
-            color: Color(0xFFdadce0),
-            width: 1.0
-          )
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFFBCC9FD),
+              blurRadius: 10.0,
+              offset: Offset(0.0, 3.0)
+            ),
+          ],
+          // border: Border.all(
+          //   color: Color(0xFFdadce0),
+          //   width: 1.0
+          // ),
         ),
-        width: widget.width,
-        height: widget.height,
+        width: 130.0,
+        height: 70.0,
         child: Center(
-          child: Icon(Icons.crop_free, color: Color(0xFF1A73E8), size: 40),
+          child: Icon(Icons.crop_free, color: Colors.white, size: 30),
         ),
       ),
     );
