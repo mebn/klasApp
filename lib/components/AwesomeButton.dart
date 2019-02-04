@@ -24,14 +24,15 @@ class AwesomeButton extends StatefulWidget {
 }
 
 class _AwesomeButtonState extends State<AwesomeButton> {
-  Color color = Color(0xFF1A73E8);
+  Color color = Color(0xff2879fe);
+  
   _hold(){
     setState(() {
       if(widget.direction == 'forward'){ globals.forward = true; }
       if(widget.direction == 'backward'){ globals.backward = true; }
       if(widget.direction == 'left'){ globals.left = true; }
       if(widget.direction == 'right'){ globals.right = true; }
-      color = Color(0xFF5F98F6);
+      color = Color(0xff95bcff);
     });
     Vibration.vibrate(duration: 10);
   }
@@ -42,7 +43,7 @@ class _AwesomeButtonState extends State<AwesomeButton> {
       if(widget.direction == 'backward'){ globals.backward = false; }
       if(widget.direction == 'left'){ globals.left = false; }
       if(widget.direction == 'right'){ globals.right = false; }
-      color = Color(0xFF1A73E8);
+      color = Color(0xff2879fe);
     });
   }
   @override
@@ -55,17 +56,6 @@ class _AwesomeButtonState extends State<AwesomeButton> {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.all(Radius.circular(500.0)),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFBCC9FD),
-              blurRadius: 10.0,
-              offset: Offset(0.0, 3.0)
-            ),
-          ],
-          // border: Border.all(
-          //   color: Color(0xFFdadce0),
-          //   width: 1.0
-          // ),
         ),
         margin: widget.position,
         width: widget.width,

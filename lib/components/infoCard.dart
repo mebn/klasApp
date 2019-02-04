@@ -16,14 +16,14 @@ class _InfoCardState extends State<InfoCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        border: Border.all(
-          color: Color(0xFFdadce0),
-          width: 1.0
-        )
-      ),
+      // decoration: BoxDecoration(
+      //   color: Colors.white,
+      //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      //   border: Border.all(
+      //     color: Color(0xFFdadce0),
+      //     width: 1.0
+      //   )
+      // ),
       margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
       width: MediaQuery.of(context).size.width,
       child: Container(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../components/someButton.dart';
 import './infoScreen.dart';
 
@@ -14,17 +13,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.white,
-    ));
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xff212121),
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.info_outline, color: Colors.black),
+            icon: Icon(Icons.info_outline),
             onPressed: (){
               Navigator.push(
                 context,
@@ -38,8 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("Klas", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = shader)),
-            Text(""),
+            Text("Klas App", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60, foreground: Paint()..shader = shader)),
             SomeButton(),
           ],
         ),

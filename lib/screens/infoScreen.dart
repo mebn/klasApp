@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../components/infoCard.dart';
 
 class InfoScreen extends StatefulWidget {
@@ -8,23 +7,19 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
+  TextStyle title = TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white);
   TextStyle text = TextStyle(fontSize: 16, color: Color(0xff8d8d8d));
-  TextStyle title = TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.white,
-    ));
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Information", style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
+        title: Text("Information"),
+        backgroundColor: Color(0xff212121),
         centerTitle: true,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back),
           onPressed: (){
             Navigator.pop(context);
           },

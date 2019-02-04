@@ -8,50 +8,41 @@ class SomeButton extends StatefulWidget {
 }
 
 class _SomeButtonState extends State<SomeButton> {
-  Color outerColor = Color(0xFF1A73E8);
-  _handleTapUp(){
+  Color outerColor = Color(0xff2879fe);
+
+  _hold(){
     setState(() {
-      outerColor = Color(0xFF1A73E8);
+      outerColor = Color(0xff95bcff);
+    });
+    Vibration.vibrate(duration: 10);
+  }
+
+  _release(){
+    setState(() {
+      outerColor = Color(0xff2879fe);
     });
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ControllScreen()),
     );
   }
-  _handleTapDown(){
-    setState(() {
-      outerColor = Color(0xFF5F98F6);
-    });
-    Vibration.vibrate(duration: 10);
-  }
 
-  _handleCancel(){
+  _cancel(){
     setState(() {
-      outerColor = Color(0xFF1A73E8);
+      outerColor = Color(0xff2879fe);
     });
   }
   
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => _handleTapDown(),
-      onTapUp: (_) => _handleTapUp(),
-      onTapCancel: () => _handleCancel(),
+      onTapDown: (_) => _hold(),
+      onTapUp: (_) => _release(),
+      onTapCancel: () => _cancel(),
       child: Container(
         decoration: BoxDecoration(
           color: outerColor,
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFBCC9FD),
-              blurRadius: 10.0,
-              offset: Offset(0.0, 3.0)
-            ),
-          ],
-          // border: Border.all(
-          //   color: Color(0xFFdadce0),
-          //   width: 1.0
-          // ),
         ),
         width: 130.0,
         height: 70.0,
