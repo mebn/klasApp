@@ -1,4 +1,4 @@
-package com.example.klasappflutter;
+package com.example.klasApp;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

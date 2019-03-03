@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
     Shader shader = LinearGradient(colors: <Color>[Color(0xffb92b27), Color(0xff1565C0)])
-    .createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+      .createShader(Rect.fromLTWH(0.0, 0.0, 1000.0, 1000.0));
 
   @override
   Widget build(BuildContext context) {
